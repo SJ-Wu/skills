@@ -44,7 +44,21 @@ See [CLAUDE.md](CLAUDE.md) for the full authoring conventions.
 
 ## Installing
 
-Not wired up yet. Nothing here is symlinked into `~/.claude/skills` or a Codex equivalent —
-skills are currently read straight from this repo. Per-machine symlinking lives in the sibling
-[dotfiles](https://github.com/SJ-Wu/dotfiles) repo, so installation should extend that repo's
-idempotent `link` helper in `install.sh` rather than adding a second mechanism here.
+```sh
+git clone https://github.com/SJ-Wu/skills.git
+cd skills
+./install.sh
+```
+
+`install.sh` symlinks every `<skill-name>/` directory into `~/.claude/skills/`, so edits in the
+repo take effect immediately with no reinstall. It is idempotent: correct symlinks are left
+alone, a real directory already sitting at a target is moved aside into
+`~/.claude/skills-backups/` first, and links pointing at skills that were since renamed or
+removed are pruned. Adding a new skill means re-running it; changing an existing one does not.
+
+The script deliberately depends on nothing outside this repo. Machine bootstrap lives in the
+sibling [dotfiles](https://github.com/SJ-Wu/dotfiles) repo, which can call this script when the
+repo is present — the dependency runs that way round so these skills stay usable on their own.
+
+Codex is not wired up: the CLI reads `~/.codex/prompts/`, which is a different mechanism, and
+whether it consumes `SKILL.md` natively still needs confirming.

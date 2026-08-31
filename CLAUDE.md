@@ -54,8 +54,22 @@ target one platform.
 
 ## Distribution
 
-Skills are not yet wired into any agent — nothing symlinks this directory into `~/.claude/skills`
-or a Codex equivalent. The sibling repo `../dotfiles` is where per-machine symlinking lives
-(`dotfiles/install.sh` links `claude/settings.json` and `claude/statusline.sh` into `~/.claude/`);
-if this repo needs to be installed onto a machine, extend that idempotent `link` helper rather
-than inventing a second mechanism here.
+`./install.sh` symlinks each `<skill-name>/` into `~/.claude/skills/`. Per-skill links rather
+than one link for the whole repo: it keeps `README.md` and this file out of the scanned skill
+directory, and lets different agents take different subsets later.
+
+The dependency direction is deliberate and worth preserving — this repo depends on nothing
+outside itself, and the sibling `../dotfiles` repo (which owns machine bootstrap) calls *into*
+this script. Inverting that would lock a deliberately portable, public collection to one
+person's personal environment.
+
+Two invariants the script maintains, both easy to regress:
+
+- Backups go to `~/.claude/skills-backups/`, never alongside the skills. A moved-aside copy
+  still contains a `SKILL.md` and would otherwise register as a duplicate skill.
+- Pruning only ever touches broken symlinks whose target is inside this repo, so hand-written
+  skills and links owned by anything else in `~/.claude/skills/` survive.
+
+Codex is unwired on purpose: the CLI is not installed here, `~/.codex/prompts/` is a different
+mechanism, and it is unconfirmed whether Codex reads `SKILL.md` natively. Confirm before
+designing for it.
