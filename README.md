@@ -11,11 +11,13 @@ own config directory.
 
 ```
 <skill-name>/SKILL.md    # one directory per skill; the name matches the `name:` field
+<skill-name>/*           # optional supporting scripts, referenced from SKILL.md
 ```
 
 | Skill | What it does |
 |-------|--------------|
 | [`eli5`](eli5/SKILL.md) | Explains a topic, code, or error tailored to a specific audience — a 5-year-old, a manager, a grad student, your mum. |
+| [`conventional-commits`](conventional-commits/SKILL.md) | Writes commit messages that follow Conventional Commits 1.0.0, with the description in Traditional Chinese. Ships a `validate.sh` usable as a `commit-msg` hook. |
 
 ## Skill format
 
