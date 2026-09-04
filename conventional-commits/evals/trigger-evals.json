@@ -1,0 +1,23 @@
+[
+  {"query": "ok 我剛把 auth middleware 的 token refresh 邏輯改完了，順手也動到 config/session.ts 的預設逾時。幫我 commit", "should_trigger": true},
+  {"query": "commit", "should_trigger": true},
+  {"query": "我們 repo 裝了 commitlint，我剛剛 commit 一直被擋掉說 subject may not be empty，可是我明明有寫東西啊。訊息是 'fix(api):' 然後換行寫說明", "should_trigger": true},
+  {"query": "上一個 commit 的訊息我打錯字了，把 'recieve' 改成 'receive'，其他不要動", "should_trigger": true},
+  {"query": "我這個 branch 上有 7 個 commit 大部分是 wip、wip2、fix typo 這種，要開 PR 了幫我整理成乾淨的幾個 commit", "should_trigger": true},
+  {"query": "這樣寫可以嗎？「update user service」我覺得有點模糊但想不到更好的", "should_trigger": true},
+  {"query": "我們用 semantic-release，可是 merge 到 main 之後版本號都沒有 bump，一直停在 1.4.2。CI 有跑，log 說 no new version", "should_trigger": true},
+  {"query": "我把 getUser() 的回傳從物件改成 Promise 了，所有 caller 都要加 await。這個要怎麼在 commit 裡標記讓用的人知道", "should_trigger": true},
+  {"query": "幫我把剛剛做的那個快取層的改動寫成 commit，正體中文", "should_trigger": true},
+  {"query": "我要開一個 PR 標題要怎麼下，我們 repo 的 commit 都是 feat: fix: 那種格式的", "should_trigger": true},
+
+  {"query": "幫我 interactive rebase 把中間那兩個 commit 的順序對調，然後把第三個 drop 掉", "should_trigger": false},
+  {"query": "根據這個 repo 從 v1.2.0 到現在的 commit 產生一份 CHANGELOG.md，照版本分段", "should_trigger": false},
+  {"query": "幫我裝 husky 跟 commitlint，設定成 pre-commit 跑 eslint、commit-msg 跑 lint 檢查。用 pnpm", "should_trigger": false},
+  {"query": "有個測試從上禮拜開始 fail，幫我 git bisect 找出是哪個 commit 弄壞的，good 的點是 v2.1.0", "should_trigger": false},
+  {"query": "git commit --fixup 跟 --squash 差在哪？我看同事都在用但我不確定什麼時候該用哪個", "should_trigger": false},
+  {"query": "這個 PR 改了 12 個檔案，幫我寫一段 PR 的描述內文說明改了什麼、為什麼要改、reviewer 要注意哪些地方", "should_trigger": false},
+  {"query": "src/parser/tokenizer.ts 這個檔案完全沒註解，幫我加上 JSDoc，每個 export 的 function 都要", "should_trigger": false},
+  {"query": "我 rebase 到 main 之後 package-lock.json 衝突了，幫我解", "should_trigger": false},
+  {"query": "剛剛 commit 錯了，我要把最後一個 commit 退掉但是檔案的修改要留著", "should_trigger": false},
+  {"query": "幫我統計這個 repo 過去半年每個人的 commit 數量跟改動行數，做成一個表", "should_trigger": false}
+]
